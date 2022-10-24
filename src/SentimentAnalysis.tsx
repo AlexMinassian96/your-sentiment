@@ -3,6 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import styled from 'styled-components';
 import { Col, Form, Row, } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import KeywordGrid from './KeywordGrid';
 
 interface SentimentAnalysis {
   type: string;
@@ -71,7 +72,13 @@ function SentimentalAnalysis() {
     <Row>
         <Col sm>
         {sentiment 
-            ? <Score>{`Your Score: ${Math.round(sentiment.score * 100)}`}</Score> : <></>}
+            ? <Score>{`Your Score: ${Math.round(sentiment.score * 100)}`}</Score> 
+            : <></>}
+        </Col>
+        <Col>
+          {sentiment 
+            ? <KeywordGrid keywords={sentiment.keywords}/> 
+            : <></>}
         </Col>
     </Row>
 </>
